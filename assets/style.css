@@ -328,6 +328,8 @@ h1.big em{font-style:normal;color:var(--primary)}
 @media(max-width:760px){
   .db-brand,.demobar nav{display:none}.db-in{justify-content:flex-end}
   .nav .btn-sm{font-size:13px;padding:9px 14px}.nav .logo img{height:32px}
+  .foot{padding:40px 24px 32px;border-radius:24px 80px 0 0}.foot .cols{grid-template-columns:1fr 1fr}
+  .foot .bottom{flex-direction:column;align-items:flex-start;gap:16px}
 }
 /* mobile: big like the reference, fluid by viewport width */
 @media(max-width:900px){
