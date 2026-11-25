@@ -69,7 +69,7 @@
       <nav>${[1, 2, 3].map(lpBtn).join('')}<i></i>
         <a href="${withParams('video.html')}" class="${page === 'video' ? 'on' : ''}">Video</a>
         <a href="${withParams('jadwal.html')}" class="${page === 'jadwal' ? 'on' : ''}">Jadwal Call</a></nav>
-      <div class="db-right">${page === 'lp' ? '<button data-autofill>Isi form contoh</button>' : ''}<button data-hide title="Sembunyikan bar (tekan B)">✕</button></div></div>`;
+      <div class="db-right"><button data-hide title="Sembunyikan bar (tekan B)">✕</button></div></div>`;
     document.body.prepend(bar);
     document.body.classList.add('has-demobar');
     const toggle = () => { const h = document.body.classList.toggle('demobar-hidden'); $('[data-hide]', bar).textContent = h ? '▾ Showcase' : '✕'; };
@@ -158,8 +158,6 @@
     overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
     $$('[data-open]').forEach((b) => b.addEventListener('click', openModal));
-    const af = $('[data-autofill]');
-    if (af) af.onclick = () => { if (!overlay.classList.contains('open')) openModal(); setTimeout(autofill, 350); };
   }
   function chips(name, opts, single) {
     return `<div class="chipset" data-name="${name}" data-single="${single ? 1 : 0}">${opts.map((o) => `<button type="button" class="chip">${o}</button>`).join('')}</div>`;
@@ -244,16 +242,6 @@
     if (!has) return done();
     gsap.to(modal, { y: 30, opacity: 0, duration: 0.3, ease: 'power2.in' });
     gsap.to(overlay, { opacity: 0, duration: 0.35, ease: 'power2.in', onComplete: done });
-  }
-  function autofill() {
-    if (step === 1) {
-      const f = $('form', modal); if (!f) return;
-      f.nama.value = 'Budi Santoso'; f.wa.value = '812 3456 7890'; f.email.value = 'budi@kantornotaris.id'; f.kota.value = 'Bandung';
-      $$('.field', modal).forEach((x) => x.classList.remove('err'));
-      const p = $$('[data-name="praktik"] .chip', modal)[2]; p && !p.classList.contains('on') && p.click();
-    } else {
-      [['volume', [1]], ['akta', [0, 8]], ['kendala', [0, 1]], ['minat', [0]]].forEach(([k, idx]) => idx.forEach((i) => { const c = $$(`[data-name="${k}"] .chip`, modal)[i]; c && !c.classList.contains('on') && c.click(); }));
-    }
   }
 
   /* ---------- video page ---------- */
@@ -403,7 +391,7 @@
         </div></div></div>
         <div class="meta"><span class="tag">${a.tag}</span><h3>${a.h}</h3><a class="open" href="lp-${a.n}.html">Buka Landing Page <span>→</span></a></div></div>`).join('')}</div>
       <div class="flow" data-flow><div>Iklan Instagram</div><i>→</i><div>Landing page</div><i>→</i><div>Popup 1 · Kontak</div><i>→</i><div>Popup 2 · 4 pertanyaan</div><i>→</i><div>Video cara kerja</div><i>→</i><div>Konsultasi 15 menit / WhatsApp</div></div>
-      <p class="foot-note">Tekan B untuk menyembunyikan bar showcase. Tombol "Isi form contoh" di bar mengisi form otomatis saat demo.</p>
+      <p class="foot-note">Tekan B untuk menyembunyikan bar showcase.</p>
     </div></div>`;
     $$('.heart-btn').forEach((h) => h.onclick = () => { const s = $('svg', h); s.classList.toggle('on'); s.classList.add('heart'); if (has) gsap.fromTo(s, { scale: 0.6 }, { scale: 1, duration: 0.5, ease: 'back.out(4)' }); });
     if (!has) return;
