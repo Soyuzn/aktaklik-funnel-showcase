@@ -63,14 +63,15 @@
   function demoBar() {
     const bar = document.createElement('div');
     bar.className = 'demobar';
-    const lpBtn = (n) => `<a href="lp-${n}.html" class="${page === 'lp' && src == n ? 'on' : ''}">LP ${n} · ${LPS[n].short}</a>`;
+    const lpBtn = (n) => `<a href="lp-${n}.html" class="${page === 'lp' && src == n ? 'on' : ''}">LP ${n}<span> · ${LPS[n].short}</span></a>`;
     bar.innerHTML = `<div class="db-in">
       <a class="db-brand" href="index.html">AKTAKLIK FUNNEL <span>SHOWCASE</span></a>
-      <nav>${[1, 2, 3].map(lpBtn).join('')}<i></i>
+      <nav><a href="index.html" class="${page === 'hub' ? 'on' : ''}">Creative</a><i></i>${[1, 2, 3].map(lpBtn).join('')}<i></i>
         <a href="${withParams('video.html')}" class="${page === 'video' ? 'on' : ''}">Video</a>
         <a href="${withParams('jadwal.html')}" class="${page === 'jadwal' ? 'on' : ''}">Jadwal Call</a></nav>
       <div class="db-right"><button data-hide title="Sembunyikan bar (tekan B)">✕</button></div></div>`;
     document.body.prepend(bar);
+    const on = $('nav a.on', bar); if (on) $('nav', bar).scrollLeft = on.offsetLeft - 40;
     document.body.classList.add('has-demobar');
     const toggle = () => { const h = document.body.classList.toggle('demobar-hidden'); $('[data-hide]', bar).textContent = h ? '▾ Showcase' : '✕'; };
     $('[data-hide]', bar).onclick = toggle;
