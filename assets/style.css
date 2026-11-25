@@ -328,7 +328,7 @@ h1.big em{font-style:normal;color:var(--primary)}
 @media(max-width:760px){
   .db-brand,.demobar nav a span{display:none}.db-in{gap:6px;padding:0 8px 0 10px}
   .demobar nav{justify-content:flex-start;scrollbar-width:none}.demobar nav::-webkit-scrollbar{display:none}
-  .demobar nav a{padding:7px 10px}.demobar nav i{margin:0 3px;flex:none}
+  .demobar nav a{padding:7px 8px}.demobar nav i{margin:0 2px;flex:none}
   .nav .btn-sm{font-size:13px;padding:9px 14px}.nav .logo img{height:32px}
   .foot{padding:40px 24px 32px;border-radius:24px 80px 0 0}.foot .cols{grid-template-columns:1fr 1fr}
   .foot .bottom{flex-direction:column;align-items:flex-start;gap:16px}
